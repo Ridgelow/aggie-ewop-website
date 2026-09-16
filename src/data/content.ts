@@ -32,7 +32,6 @@ export const whyJoin = [
   'Contribute your personal strengths',
   'Apply skills from your major',
   'Have a positive impact on the world',
-  'Be part of a caring community',
 ];
 
 export const missionQuote =

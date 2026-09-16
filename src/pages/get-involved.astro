@@ -2,66 +2,101 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import Timeline from '../components/Timeline.astro';
-import { membershipRequirements, memberMeetingDates, whyJoin } from '../data/content';
+import {
+  membershipRequirements,
+  memberMeetingDates,
+  whyJoin,
+  applicationsOpen,
+  applicationsClosedMessage,
+} from '../data/content';
 import { links } from '../data/links';
+
+const whyColors = ['text-rose', 'text-violet', 'text-sky', 'text-fundraising', 'text-rose', 'text-violet'];
 ---
 
 <BaseLayout title="Get Involved" description="How to join Aggie EWOP — membership requirements and the Fall recruitment timeline.">
-  <section class="animate-fadeUp flex max-w-3xl flex-col gap-4 px-6 pb-10 pt-16 md:px-24 md:pt-24">
-    <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Get involved</span>
-    <h1 class="font-display text-4xl font-extrabold leading-tight text-ink md:text-5xl">Ready to join Aggie EWOP?</h1>
-    <p class="font-body text-lg leading-relaxed text-muted">
-      Use your strong mind and kind heart to make a difference — each one of you has what it takes to provide
-      value. Don't let fear keep you from joining.
-    </p>
+  <!-- Hero -->
+  <section
+    data-hero
+    class="grid grid-cols-1 items-end gap-8 px-6 pb-12 pt-16 md:grid-cols-[1.2fr_1fr] md:gap-12 md:px-24 md:pb-16 md:pt-24"
+  >
+    <div class="flex flex-col gap-4">
+      <span class="reveal font-body text-sm font-bold uppercase tracking-widest text-rose">Get involved</span>
+      <h1 class="reveal font-display text-4xl font-extrabold leading-tight text-ink md:text-5xl" style="--reveal-delay: 80ms">
+        Ready to join Aggie EWOP?
+      </h1>
+      <p class="reveal max-w-lg font-body text-lg leading-relaxed text-muted" style="--reveal-delay: 160ms">
+        Use your strong mind and kind heart to make a difference — each of you has what it takes to provide value.
+      </p>
+    </div>
+
+    {
+      !applicationsOpen && (
+        <div class="reveal-right rounded-2xl border border-rose/20 bg-rose-tint/60 p-5 sm:p-6" style="--reveal-delay: 120ms">
+          <span class="font-body text-xs font-bold uppercase tracking-widest text-rose">Recruiting update</span>
+          <h2 class="mt-2 font-display text-xl font-bold text-ink">{applicationsClosedMessage.title}</h2>
+          <p class="mt-2 font-body text-sm leading-relaxed text-muted">{applicationsClosedMessage.body}</p>
+        </div>
+      )
+    }
   </section>
 
-  <section class="animate-fadeUp flex flex-col gap-6 px-6 pb-16 md:px-24">
-    <h2 class="font-display text-2xl font-bold text-ink">Why Aggie EWOP?</h2>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+  <!-- Why join -->
+  <section class="bg-gradient-to-b from-pink-wash-1 to-pink-wash-2 px-6 py-14 md:px-24 md:py-16">
+    <div class="reveal mb-8 flex flex-col gap-2 md:mb-10">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Why join</span>
+      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Why Aggie EWOP?</h2>
+    </div>
+    <div class="reveal-stagger grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
       {
         whyJoin.map((benefit, i) => (
-          <div
-            class:list={[
-              'flex items-start gap-3.5 rounded-2xl border border-line bg-white p-5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/10',
-              i === whyJoin.length - 1 && 'sm:col-span-2 md:col-span-3',
-            ]}
-          >
-            <span class="text-lg text-rose">★</span>
-            <span class="font-body text-[14.5px] leading-relaxed text-ink">{benefit}</span>
+          <div class="flex items-start gap-3 border-l-2 border-line pl-4" style={`--i: ${i}`}>
+            <span class={`mt-0.5 shrink-0 font-display text-sm font-extrabold ${whyColors[i]}`}>★</span>
+            <span class="font-body text-sm leading-relaxed text-ink sm:text-base">{benefit}</span>
           </div>
         ))
       }
     </div>
   </section>
 
-  <section class="animate-fadeUp grid grid-cols-1 gap-16 bg-gradient-to-b from-pink-wash-1 to-pink-wash-2 px-6 py-16 md:grid-cols-2 md:px-24 md:py-[72px]">
-    <div class="flex flex-col gap-4">
-      <h2 class="font-display text-[28px] font-bold text-ink">Membership requirements</h2>
-      <p class="font-body text-[15px] leading-relaxed text-muted">
-        Our goal is for every member to actively contribute to the mission and grow from the opportunities we've
-        worked hard to provide.
+  <!-- Requirements + meetings -->
+  <section class="grid grid-cols-1 gap-10 px-6 py-14 md:grid-cols-2 md:gap-14 md:px-24 md:py-16">
+    <div class="reveal-left flex flex-col gap-4">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Membership</span>
+      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Requirements</h2>
+      <p class="font-body text-base leading-relaxed text-muted">
+        Every member actively contributes to the mission — and grows from the opportunities we provide.
       </p>
-      <ul class="mt-2 flex flex-col gap-3">
+      <ul class="mt-1 flex flex-col gap-3">
         {
           membershipRequirements.map((req) => (
-            <li class="flex items-center gap-3 font-body text-[15px] text-ink">
-              <span class="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-rose-tint text-xs font-bold text-rose">✓</span>
+            <li class="flex items-center gap-3 font-body text-base text-ink">
+              <span class="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-rose-tint text-xs font-bold text-rose">
+                ✓
+              </span>
               {req}
             </li>
           ))
         }
+        <li class="flex items-center gap-3 font-body text-base text-ink">
+          <span class="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-rose-tint text-xs font-bold text-rose">
+            ✓
+          </span>
+          Attend 3 member meetings
+        </li>
       </ul>
     </div>
-    <div class="flex flex-col gap-4">
-      <h3 class="font-display text-xl font-semibold text-ink">Attend 3 member meetings</h3>
-      <p class="font-body text-sm text-muted">All member meetings run 5:30–6:30pm.</p>
-      <div class="flex flex-col gap-2.5">
+
+    <div class="reveal-right flex flex-col gap-4">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">This semester</span>
+      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Member meetings</h2>
+      <p class="font-body text-base leading-relaxed text-muted">All meetings run 5:30–6:30pm.</p>
+      <div class="mt-1 flex flex-col gap-2.5">
         {
           memberMeetingDates.map((date, i) => (
-            <div class="flex items-center justify-between rounded-xl border border-line bg-white px-[18px] py-3.5 font-body text-[14.5px] text-ink">
-              <span>Meeting {i + 1}</span>
-              <strong>{date}</strong>
+            <div class="flex items-center justify-between rounded-xl border border-line bg-white px-4 py-3.5 font-body text-sm text-ink sm:px-5 sm:text-base">
+              <span class="text-muted">Meeting {i + 1}</span>
+              <strong class="font-semibold text-ink">{date}</strong>
             </div>
           ))
         }
@@ -69,27 +104,59 @@ import { links } from '../data/links';
     </div>
   </section>
 
-  <section class="animate-fadeUp flex flex-col gap-10 px-6 py-16 md:px-24 md:py-24">
-    <div class="flex flex-col items-center gap-2 text-center">
+  <!-- Timeline + apply -->
+  <section class="soft-band grid grid-cols-1 items-start gap-10 px-6 py-14 md:grid-cols-2 md:gap-14 md:px-24 md:py-16">
+    <div class="reveal-left">
       <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">How to join</span>
-      <h2 class="font-display text-[28px] font-bold text-ink">Fall recruitment timeline</h2>
+      <h2 class="mt-2 font-display text-3xl font-bold text-ink md:text-4xl">Fall recruitment timeline</h2>
+      <div class="mt-8">
+        <Timeline />
+      </div>
     </div>
-    <div class="mx-auto w-full max-w-3xl">
-      <Timeline />
-    </div>
-  </section>
 
-  <section class="soft-band animate-fadeUp grid grid-cols-1 items-center gap-10 px-6 py-16 md:grid-cols-[1fr_auto] md:px-24 md:py-20">
-    <div class="flex flex-col gap-4">
-      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Apply in 5 minutes</span>
-      <h2 class="font-display text-3xl font-extrabold text-ink md:text-4xl">Scan to start your application</h2>
-      <p class="max-w-md font-body text-base leading-relaxed text-muted">
-        Please don't let fear keep you from joining — each one of you has what it takes to provide value.
-      </p>
-      <Button href={links.applicationUrl} applyCta class="mt-2 w-fit">Start 5-Minute Application</Button>
-    </div>
-    <div class="w-fit rounded-2xl bg-white p-5">
-      <img src="/images/apply-qr.png" alt="QR code to apply" class="h-44 w-44" />
+    <div class="reveal-right flex h-full flex-col justify-center gap-5 rounded-2xl border border-line/80 bg-white/80 p-6 sm:p-8">
+      <div class="flex flex-col gap-2">
+        <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">
+          {applicationsOpen ? 'Apply in 5 minutes' : 'Next cycle'}
+        </span>
+        <h2 class="font-display text-2xl font-bold text-ink md:text-3xl">
+          {applicationsOpen ? 'Start your application' : 'Come back for Spring'}
+        </h2>
+        <p class="font-body text-base leading-relaxed text-muted">
+          {
+            applicationsOpen
+              ? 'Please don’t let fear keep you from joining — each of you has what it takes to provide value.'
+              : 'Fall recruiting has wrapped. Stay connected and check back when Spring applications open.'
+          }
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <Button href={links.applicationUrl} applyCta class="w-full !text-center sm:min-h-[52px] sm:!leading-[28px]">
+          {applicationsOpen ? 'Start 5-Minute Application' : 'Application status'}
+        </Button>
+        <a
+          href={links.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-lg border-2 border-ink px-6 py-3 text-center font-body text-sm font-bold text-ink transition-all hover:bg-ink hover:text-white"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"></circle>
+          </svg>
+          {links.instagramHandle}
+        </a>
+      </div>
+
+      {
+        applicationsOpen && (
+          <div class="w-fit rounded-2xl border border-line bg-white p-4">
+            <img src="/images/apply-qr.png" alt="QR code to apply" class="h-36 w-36 sm:h-40 sm:w-40" />
+          </div>
+        )
+      }
     </div>
   </section>
 </BaseLayout>
