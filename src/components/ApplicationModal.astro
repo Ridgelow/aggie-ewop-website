@@ -1,0 +1,76 @@
+---
+import { applicationsOpen, applicationsClosedMessage } from '../data/content';
+---
+
+{
+  !applicationsOpen && (
+    <div
+      id="apply-modal"
+      class="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center p-6 opacity-0 transition-opacity duration-200"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="apply-modal-title"
+    >
+      <div data-apply-backdrop class="absolute inset-0 bg-ink/50"></div>
+      <div class="relative z-10 w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl shadow-ink/20">
+        <h2 id="apply-modal-title" class="font-display text-2xl font-bold text-ink">
+          {applicationsClosedMessage.title}
+        </h2>
+        <p class="mt-3 font-body text-base leading-relaxed text-muted">{applicationsClosedMessage.body}</p>
+        <button
+          type="button"
+          data-apply-dismiss
+          class="mt-6 w-full rounded-lg bg-brand px-6 py-3 font-body text-sm font-bold text-white transition-transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-rose/30"
+        >
+          {applicationsClosedMessage.dismiss}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+{
+  !applicationsOpen && (
+    <script>
+      const modal = document.getElementById('apply-modal');
+      if (modal) {
+        const open = () => {
+          modal.classList.remove('pointer-events-none', 'opacity-0');
+          modal.classList.add('pointer-events-auto', 'opacity-100');
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        };
+
+        const close = () => {
+          modal.classList.add('pointer-events-none', 'opacity-0');
+          modal.classList.remove('pointer-events-auto', 'opacity-100');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        };
+
+        const isApplyLink = (el) => {
+          if (!(el instanceof Element)) return false;
+          const anchor = el.closest('a[data-apply-cta]');
+          return Boolean(anchor);
+        };
+
+        document.addEventListener('click', (e) => {
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          if (!isApplyLink(target)) return;
+          e.preventDefault();
+          open();
+        });
+
+        modal.querySelectorAll('[data-apply-dismiss], [data-apply-backdrop]').forEach((el) => {
+          el.addEventListener('click', close);
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') close();
+        });
+      }
+    </script>
+  )
+}

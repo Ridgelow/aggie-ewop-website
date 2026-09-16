@@ -30,18 +30,17 @@ import { membershipRequirements } from '../data/content';
         business plan for life after prison — and gives Texas A&amp;M students a way to serve alongside them.
       </p>
       <div class="reveal mt-2 flex flex-wrap gap-4" style="--reveal-delay: 300ms">
-        <Button href="/get-involved">Start 5-Minute Application</Button>
+        <Button href="/get-involved" applyCta>Start 5-Minute Application</Button>
         <Button href="/about" variant="secondary">Learn About EWOP</Button>
       </div>
     </div>
-    <div class="relative">
-      <!-- Blur stays static so it isn't composited every frame with the image -->
-      <div class="pointer-events-none absolute -right-12 -top-12 h-80 w-80 rounded-full bg-brand opacity-40 blur-[70px]"></div>
-      <div class="reveal-right relative overflow-hidden rounded-3xl shadow-2xl shadow-ink/20" style="--reveal-delay: 180ms">
+    <div class="relative overflow-hidden">
+      <div class="pointer-events-none absolute -right-8 -top-8 h-64 w-64 rounded-full bg-brand opacity-30 blur-[60px] sm:-right-12 sm:-top-12 sm:h-80 sm:w-80 sm:opacity-40 sm:blur-[70px]"></div>
+      <div class="reveal-right relative overflow-hidden rounded-2xl shadow-xl shadow-ink/15 sm:rounded-3xl sm:shadow-2xl sm:shadow-ink/20" style="--reveal-delay: 180ms">
         <img
           src="/images/hero-prison-visit.jpg"
           alt="Aggie EWOP students visiting the unit"
-          class="h-[340px] w-full object-cover md:h-[540px]"
+          class="h-[280px] w-full object-cover sm:h-[340px] md:h-[540px]"
           width="800"
           height="540"
           decoding="async"
@@ -69,9 +68,9 @@ import { membershipRequirements } from '../data/content';
     <div class="reveal-stagger mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-12 md:grid-cols-4">
       {
         pillars.map((pillar, i) => (
-          <div style={`--i: ${i}`}>
-            <PillarCard pillar={pillar} />
-          </div>
+            <div style={`--i: ${i}`} class="h-full">
+              <PillarCard pillar={pillar} />
+            </div>
         ))
       }
     </div>
@@ -102,10 +101,10 @@ import { membershipRequirements } from '../data/content';
           Attend 3 member meetings
         </li>
       </ul>
-      <Button href="/get-involved" class="mt-2 w-fit">Start 5-Minute Application</Button>
+      <Button href="/get-involved" applyCta class="mt-2 w-fit">Start 5-Minute Application</Button>
     </div>
     <div class="reveal-right">
-      <h3 class="mb-5 font-display text-xl font-semibold text-ink">Recruitment timeline</h3>
+      <h3 class="mb-5 font-display text-xl font-semibold text-ink">Fall recruitment timeline</h3>
       <Timeline />
     </div>
   </section>

@@ -38,6 +38,15 @@ export const whyJoin = [
 export const missionQuote =
   'Use your strong mind and kind heart to make a difference. Each one of you has what it takes to provide value.';
 
+// Flip to true when applications reopen (e.g. Spring recruiting).
+export const applicationsOpen = false;
+
+export const applicationsClosedMessage = {
+  title: 'Fall applications are closed',
+  body: 'Thank you for your interest! Applications for Fall recruiting are over — please come back for Spring recruiting when we open applications again.',
+  dismiss: 'Got it',
+};
+
 // Our History milestones on /about — keep each detail to one short sentence.
 export const historyMilestones = [
   {

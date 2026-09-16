@@ -14,30 +14,30 @@ const yearColor: Record<string, string> = {
 };
 ---
 
-<div class="mx-auto max-w-3xl">
+<div class="mx-auto w-full max-w-3xl">
   {
     historyMilestones.map((step, i) => (
-      <div class="grid grid-cols-[88px_28px_1fr] gap-x-4 md:grid-cols-[110px_32px_1fr] md:gap-x-5">
-        <div class={`pt-0.5 text-right font-display text-lg font-extrabold leading-none md:text-xl ${yearColor[step.color]}`}>
+      <div class="grid grid-cols-[4.5rem_1.25rem_1fr] gap-x-3 sm:grid-cols-[88px_28px_1fr] sm:gap-x-4 md:grid-cols-[110px_32px_1fr] md:gap-x-5">
+        <div class={`pt-0.5 text-right font-display text-sm font-extrabold leading-tight sm:text-lg sm:leading-none md:text-xl ${yearColor[step.color]}`}>
           {step.year}
         </div>
 
         <div class="flex flex-col items-center">
-          <span class={`mt-1 block h-3.5 w-3.5 shrink-0 rounded-full ring-4 ring-pink-wash-1 ${dotColor[step.color]}`} />
+          <span class={`mt-1 block h-3 w-3 shrink-0 rounded-full ring-4 ring-pink-wash-1 sm:h-3.5 sm:w-3.5 ${dotColor[step.color]}`} />
           {i < historyMilestones.length - 1 && (
             <span class="mt-1 w-0.5 flex-1 bg-line" />
           )}
         </div>
 
-        <div class={`pb-10 ${i === historyMilestones.length - 1 ? 'pb-0' : ''}`}>
-          <h3 class="font-display text-lg font-semibold text-ink md:text-xl">{step.title}</h3>
+        <div class={`pb-8 sm:pb-10 ${i === historyMilestones.length - 1 ? '!pb-0' : ''}`}>
+          <h3 class="font-display text-base font-semibold text-ink sm:text-lg md:text-xl">{step.title}</h3>
           <p class="mt-1.5 font-body text-sm leading-relaxed text-muted">{step.detail}</p>
           {'image' in step && step.image && (
             <div class="mt-4 overflow-hidden rounded-2xl shadow-lg shadow-ink/10">
               <img
                 src={step.image}
                 alt={step.title}
-                class="h-44 w-full object-cover md:h-56"
+                class="h-40 w-full object-cover sm:h-44 md:h-56"
                 loading="lazy"
               />
             </div>

@@ -6,7 +6,7 @@ import { membershipRequirements, memberMeetingDates, whyJoin } from '../data/con
 import { links } from '../data/links';
 ---
 
-<BaseLayout title="Get Involved" description="How to join Aggie EWOP — membership requirements and the recruitment timeline.">
+<BaseLayout title="Get Involved" description="How to join Aggie EWOP — membership requirements and the Fall recruitment timeline.">
   <section class="animate-fadeUp flex max-w-3xl flex-col gap-4 px-6 pb-10 pt-16 md:px-24 md:pt-24">
     <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Get involved</span>
     <h1 class="font-display text-4xl font-extrabold leading-tight text-ink md:text-5xl">Ready to join Aggie EWOP?</h1>
@@ -72,21 +72,21 @@ import { links } from '../data/links';
   <section class="animate-fadeUp flex flex-col gap-10 px-6 py-16 md:px-24 md:py-24">
     <div class="flex flex-col items-center gap-2 text-center">
       <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">How to join</span>
-      <h2 class="font-display text-[28px] font-bold text-ink">Recruitment timeline</h2>
+      <h2 class="font-display text-[28px] font-bold text-ink">Fall recruitment timeline</h2>
     </div>
     <div class="mx-auto w-full max-w-3xl">
       <Timeline />
     </div>
   </section>
 
-  <section class="animate-fadeUp grid grid-cols-1 items-center gap-10 bg-gradient-to-br from-ink to-ink2 px-6 py-16 md:grid-cols-[1fr_auto] md:px-24 md:py-20">
+  <section class="soft-band animate-fadeUp grid grid-cols-1 items-center gap-10 px-6 py-16 md:grid-cols-[1fr_auto] md:px-24 md:py-20">
     <div class="flex flex-col gap-4">
-      <span class="font-body text-sm font-bold uppercase tracking-widest text-[#F49FC4]">Apply in 5 minutes</span>
-      <h2 class="font-display text-3xl font-extrabold text-white md:text-4xl">Scan to start your application</h2>
-      <p class="max-w-md font-body text-base leading-relaxed text-[#D8CFDE]">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Apply in 5 minutes</span>
+      <h2 class="font-display text-3xl font-extrabold text-ink md:text-4xl">Scan to start your application</h2>
+      <p class="max-w-md font-body text-base leading-relaxed text-muted">
         Please don't let fear keep you from joining — each one of you has what it takes to provide value.
       </p>
-      <Button href={links.applicationUrl} class="mt-2 w-fit">Start 5-Minute Application</Button>
+      <Button href={links.applicationUrl} applyCta class="mt-2 w-fit">Start 5-Minute Application</Button>
     </div>
     <div class="w-fit rounded-2xl bg-white p-5">
       <img src="/images/apply-qr.png" alt="QR code to apply" class="h-44 w-44" />

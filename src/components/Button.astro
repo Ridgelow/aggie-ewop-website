@@ -3,9 +3,11 @@ export interface Props {
   href: string;
   variant?: 'primary' | 'secondary';
   class?: string;
+  /** Marks this as an application CTA (shows closed modal when applications are shut). */
+  applyCta?: boolean;
 }
 
-const { href, variant = 'primary', class: className = '' } = Astro.props;
+const { href, variant = 'primary', class: className = '', applyCta = false } = Astro.props;
 
 const base = 'inline-block rounded-lg px-6 py-3 text-center font-body text-sm font-bold transition-all';
 const styles = {
@@ -14,6 +16,6 @@ const styles = {
 };
 ---
 
-<a href={href} class={`${base} ${styles[variant]} ${className}`}>
+<a href={href} class={`${base} ${styles[variant]} ${className}`} {...(applyCta ? { 'data-apply-cta': '' } : {})}>
   <slot />
 </a>

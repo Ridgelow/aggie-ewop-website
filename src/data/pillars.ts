@@ -56,8 +56,7 @@ export const pillars: Pillar[] = [
     name: 'Partnerships',
     monogram: 'PTR',
     color: 'violet',
-    summary:
-      'Builds relationships with donors, nonprofits, and businesses through events like Aggie Day and Alumni Storytelling.',
+    summary: 'Builds donor, nonprofit, and business relationships through Aggie Day and Alumni Storytelling.',
     description:
       'Manages external relations, donor outreach, and partnerships with businesses, nonprofits, and student organizations. Signature events include Aggie Day 2026, Alumni Storytelling, and Corporate Etiquette.',
     director: 'Brionna Grapeson',

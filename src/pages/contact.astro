@@ -64,13 +64,13 @@ import { links } from '../data/links';
       </div>
     </div>
 
-    <div class="animate-fadeUp flex flex-col items-center justify-center gap-5 rounded-3xl bg-gradient-to-br from-ink to-ink2 p-11 text-center">
-      <span class="font-body text-xs font-bold uppercase tracking-widest text-[#F49FC4]">Ready to join?</span>
-      <h2 class="font-display text-2xl font-bold text-white">Scan for the 5-minute application</h2>
-      <div class="w-fit rounded-2xl bg-white p-[18px]">
+    <div class="soft-band animate-fadeUp flex flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl p-6 text-center sm:rounded-3xl sm:p-11">
+      <span class="font-body text-xs font-bold uppercase tracking-widest text-rose">Ready to join?</span>
+      <h2 class="font-display text-2xl font-bold text-ink">Scan for the 5-minute application</h2>
+      <div class="w-fit rounded-2xl bg-white p-[18px] shadow-sm">
         <img src="/images/apply-qr.png" alt="QR code to apply" class="h-40 w-40" />
       </div>
-      <Button href={links.applicationUrl}>Or apply online</Button>
+      <Button href={links.applicationUrl} applyCta>Or apply online</Button>
     </div>
   </section>
 </BaseLayout>
