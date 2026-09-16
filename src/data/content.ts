@@ -37,3 +37,44 @@ export const whyJoin = [
 
 export const missionQuote =
   'Use your strong mind and kind heart to make a difference. Each one of you has what it takes to provide value.';
+
+// Our History milestones on /about — keep each detail to one short sentence.
+export const historyMilestones = [
+  {
+    year: '2017',
+    title: 'A women\'s pilot begins',
+    detail: 'Leaders adapt Texas’s Prison Entrepreneurship Program (PEP) to serve incarcerated women.',
+    color: 'rose',
+  },
+  {
+    year: '2018',
+    title: 'First pilot class',
+    detail: '44 women participate at the Gregory S. Coleman Unit in Lockhart.',
+    color: 'violet',
+  },
+  {
+    year: '2019',
+    title: 'EWOP is founded',
+    detail: 'EWOP launches as its own 501(c)(3) nonprofit dedicated to women.',
+    color: 'sky',
+  },
+  {
+    year: '2020',
+    title: 'Classes begin',
+    detail: 'The in-prison leadership and entrepreneurship program starts serving women.',
+    color: 'rose',
+  },
+  {
+    year: '2025',
+    title: 'Aggie EWOP is founded',
+    detail: 'Texas A&M’s student chapter forms around Research & Education, Marketing, Partnerships, and Fundraising.',
+    color: 'violet',
+  },
+  {
+    year: 'Sept 2025',
+    title: 'First Aggie Day',
+    detail: 'Aggie EWOP’s first prison visit brings students inside to meet women in the program.',
+    color: 'sky',
+    image: '/images/birth-of-aggie-ewop.jpg',
+  },
+] as const;

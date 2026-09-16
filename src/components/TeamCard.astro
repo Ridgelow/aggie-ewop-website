@@ -32,30 +32,33 @@ const textColor: Record<string, string> = {
 
 const accentBg = pillar ? avatarBg[pillar.color] : 'bg-ink';
 const accentText = pillar ? textColor[pillar.color] : 'text-ink';
+
+const meta = [person.hometown, person.year, person.major].filter(Boolean).join(' · ');
 ---
 
-<div class="flex flex-col gap-3 rounded-2xl border border-line bg-white p-5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/10">
-  <div class={`relative h-16 w-16 shrink-0 overflow-hidden rounded-full ${accentBg}`}>
-    <div class="absolute inset-0 flex items-center justify-center font-display text-lg font-extrabold text-white">
+<article class="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/10">
+  <div class={`relative aspect-[4/5] w-full overflow-hidden ${accentBg}`}>
+    <div class="absolute inset-0 flex items-center justify-center font-display text-4xl font-extrabold text-white/90">
       {initials}
     </div>
     {person.photo && (
       <img
         src={person.photo}
         alt={person.name}
-        class="absolute inset-0 h-full w-full object-cover"
+        class="absolute inset-0 h-full w-full object-cover object-top"
         onerror="this.remove()"
         loading="lazy"
       />
     )}
   </div>
-  <div>
-    <h3 class="font-display text-base font-bold text-ink">{person.name}</h3>
-    <div class={`font-body text-xs font-semibold ${accentText}`}>{person.role}</div>
+  <div class="flex flex-1 flex-col gap-2 p-5 md:p-6">
+    <div>
+      <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{person.name}</h3>
+      <div class={`mt-1 font-body text-sm font-semibold ${accentText}`}>{person.role}</div>
+    </div>
+    {meta && <p class="font-body text-sm leading-relaxed text-muted">{meta}</p>}
+    {person.funFact && (
+      <p class="font-body text-sm italic leading-relaxed text-faint">{person.funFact}</p>
+    )}
   </div>
-  {(person.hometown || person.year || person.major) && (
-    <p class="font-body text-xs leading-relaxed text-faint">
-      {[person.hometown, person.year, person.major].filter(Boolean).join(' · ')}
-    </p>
-  )}
-</div>
+</article>

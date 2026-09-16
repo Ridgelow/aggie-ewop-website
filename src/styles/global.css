@@ -5,3 +5,58 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Smooth reveals — longer easing, still GPU-friendly (no will-change) */
+.reveal,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal {
+  transform: translate3d(0, 28px, 0);
+}
+
+.reveal-left {
+  transform: translate3d(-24px, 0, 0);
+}
+
+.reveal-right {
+  transform: translate3d(24px, 0, 0);
+}
+
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--stagger-base, 0ms) + (var(--i, 0) * 80ms));
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

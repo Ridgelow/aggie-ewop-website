@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatBand from '../components/StatBand.astro';
+import HistoryTimeline from '../components/HistoryTimeline.astro';
 import { facultyAdvisor } from '../data/team';
 ---
 
@@ -36,7 +37,9 @@ import { facultyAdvisor } from '../data/team';
     </div>
   </section>
 
-  <StatBand />
+  <div class="reveal">
+    <StatBand />
+  </div>
 
   <section class="animate-fadeUp grid grid-cols-1 items-center gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:px-24 md:py-24">
     <div class="overflow-hidden rounded-2xl shadow-xl shadow-ink/10">
@@ -66,25 +69,11 @@ import { facultyAdvisor } from '../data/team';
     <div class="mb-12 flex flex-col items-center gap-2 text-center">
       <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Where we come from</span>
       <h2 class="font-display text-3xl font-bold text-ink">Our history</h2>
+      <p class="mt-1 max-w-xl font-body text-sm leading-relaxed text-muted">
+        From a women's pilot in Lockhart to Aggie EWOP at Texas A&amp;M — the milestones that got us here.
+      </p>
     </div>
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-      <div class="flex flex-col gap-3 rounded-2xl border border-line bg-white p-7">
-        <h3 class="font-display text-xl font-semibold text-ink">A brief history of EWOP</h3>
-        <p class="font-body text-sm italic leading-relaxed text-faint">
-          [Add EWOP's founding story — where and when the national program began, and how it grew to Texas.]
-        </p>
-      </div>
-      <div class="flex flex-col overflow-hidden rounded-2xl border border-line bg-white">
-        <img src="/images/birth-of-aggie-ewop.jpg" alt="The birth of Aggie EWOP" class="h-48 w-full object-cover" />
-        <div class="flex flex-col gap-2.5 p-6">
-          <h3 class="font-display text-xl font-semibold text-ink">The birth of Aggie EWOP</h3>
-          <p class="font-body text-sm italic leading-relaxed text-faint">
-            [Add how the Texas A&amp;M chapter started — the founding students, the first visit, the first
-            semester.]
-          </p>
-        </div>
-      </div>
-    </div>
+    <HistoryTimeline />
   </section>
 
   <section class="animate-fadeUp grid grid-cols-1 items-center gap-8 px-6 py-16 md:grid-cols-[220px_1fr] md:gap-10 md:px-24 md:py-24">

@@ -26,7 +26,7 @@ layout code.** Almost everything an officer would need to change lives in
 | --- | --- |
 | `src/data/team.ts` | Directors, co-chairs, and the faculty advisor. Add/remove people by editing this array — the `/team` page updates automatically. |
 | `src/data/pillars.ts` | The four pillars: descriptions, directors, co-chairs, and meeting requirements. |
-| `src/data/content.ts` | Impact stats, the recruitment timeline, membership requirements, meeting dates, and the "Why Aggie EWOP" list. |
+| `src/data/content.ts` | Impact stats, the recruitment timeline, membership requirements, meeting dates, the "Why Aggie EWOP" list, and About-page history milestones. |
 | `src/data/links.ts` | Email, Instagram/LinkedIn URLs, the application form link, and meeting location. **Update `applicationUrl` before launch** — it's currently a placeholder. |
 
 To change a name, a date, a meeting time, or a link: open the relevant file
@@ -46,7 +46,7 @@ photo.
 Page files live in `src/pages/` (one file per route: `index.astro` is the
 homepage, `about.astro` is `/about`, etc.) and pull in shared pieces from
 `src/components/` (`Nav`, `Footer`, `PillarCard`, `TeamCard`, `Timeline`,
-`QuoteBlock`, `StatBand`, `Button`). Layout/structure changes happen here;
+`HistoryTimeline`, `QuoteBlock`, `StatBand`, `Button`). Layout/structure changes happen here;
 content changes should still go through `src/data/` wherever possible.
 
 ## Design system
@@ -66,12 +66,6 @@ it updates everywhere it's used.
 - `src/data/links.ts` → `applicationUrl` needs the real 5-minute
   application form link (currently a placeholder Google Form URL).
 - `src/data/links.ts` → `linkedinUrl` needs to be confirmed.
-- The "history" copy on `/about` (both the national EWOP history and the
-  Aggie EWOP founding story) is marked `[in brackets]` — replace with the
-  real story.
-- Team headshots: only Dr. Shannon Deer's photo is wired up currently.
-  Drop the rest into `public/images/team/` (see filenames in
-  `src/data/team.ts`).
 
 ## Deploying
 

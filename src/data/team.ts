@@ -5,6 +5,8 @@
 // `photo` should point to a file in /public/images/team/. If the file
 // doesn't exist yet, TeamCard.astro falls back to a colored initials avatar,
 // so it's safe to add someone here before you have their headshot.
+//
+// Bio details match the Fall 2026 AEWOP Informational deck (pillar slides).
 
 export type Person = {
   name: string;
@@ -18,45 +20,46 @@ export type Person = {
   photo?: string; // e.g. '/images/team/sadie-bubeck.jpg'
 };
 
+// Order matches the Directors slide (left → right).
 export const directors: Person[] = [
+  {
+    name: 'Brionna Grapeson',
+    role: 'Partnerships Director',
+    pillarSlug: 'partnerships',
+    hometown: 'Sugar Land, TX',
+    year: 'Senior',
+    major: 'ACCT & BH',
+    funFact: 'Solo-tripped to India & NY this past summer',
+    photo: '/images/team/brionna-grapeson.jpg',
+  },
   {
     name: 'Sadie Bubeck',
     role: 'Marketing Director',
     pillarSlug: 'marketing',
-    hometown: 'Dallas, TX',
-    year: 'Freshman',
-    major: 'Business',
-    funFact: 'I love to travel!',
+    hometown: 'Katy, TX',
+    year: 'Senior',
+    major: 'SCMT',
+    funFact: 'I grew up in Asia!',
     photo: '/images/team/sadie-bubeck.jpg',
   },
   {
     name: 'Evelyn Csoma',
     role: 'Research & Education Director',
     pillarSlug: 'research-education',
-    hometown: 'Brownwood, TX',
+    hometown: 'Round Rock, TX',
     year: 'Junior',
-    major: 'Forensic Science',
-    funFact: 'My favorite animal is an orca!',
+    major: 'Management',
+    funFact: 'I speak Romanian!',
     photo: '/images/team/evelyn-csoma.jpg',
-  },
-  {
-    name: 'Brionna Grapeson',
-    role: 'Partnerships Director',
-    pillarSlug: 'partnerships',
-    hometown: 'Leander, TX',
-    year: 'Senior',
-    major: 'SCMT & BH',
-    funFact: 'I love hiking!',
-    photo: '/images/team/brionna-grapeson.jpg',
   },
   {
     name: 'Catherine McKnight',
     role: 'Fundraising Director',
     pillarSlug: 'fundraising',
-    hometown: 'College Station, TX',
+    hometown: 'Tyler, TX',
     year: 'Senior',
-    major: 'Psychology',
-    funFact: 'Went on a 2 week road trip this summer',
+    major: 'MGMT',
+    funFact: 'I love making jewelry!',
     photo: '/images/team/catherine-mcknight.jpg',
   },
 ];
@@ -67,10 +70,10 @@ export const coChairs: Person[] = [
     role: 'Research & Education Co-Chair',
     pillarSlug: 'research-education',
     isCoChair: true,
-    hometown: 'Round Rock, TX',
+    hometown: 'Brownwood, TX',
     year: 'Junior',
-    major: 'Management',
-    funFact: 'I speak Romanian!',
+    major: 'Forensic Science',
+    funFact: 'My favorite animal is an orca!',
     photo: '/images/team/reese-estess.jpg',
   },
   {
@@ -78,10 +81,10 @@ export const coChairs: Person[] = [
     role: 'Partnerships Co-Chair',
     pillarSlug: 'partnerships',
     isCoChair: true,
-    hometown: 'Sugar Land, TX',
+    hometown: 'Leander, TX',
     year: 'Senior',
-    major: 'ACCT & BH',
-    funFact: 'Solo-tripped to India & NY this past summer',
+    major: 'SCMT & BH',
+    funFact: 'I love hiking!',
     photo: '/images/team/mia-cline.jpg',
   },
   {
@@ -100,10 +103,10 @@ export const coChairs: Person[] = [
     role: 'Marketing Co-Chair',
     pillarSlug: 'marketing',
     isCoChair: true,
-    hometown: 'Katy, TX',
-    year: 'Senior',
-    major: 'SCMT',
-    funFact: 'I grew up in Asia!',
+    hometown: 'Dallas, TX',
+    year: 'Freshman',
+    major: 'Business',
+    funFact: 'I love to travel!',
     photo: '/images/team/rashmi-kukreja.jpg',
   },
   {
@@ -122,10 +125,10 @@ export const coChairs: Person[] = [
     role: 'Fundraising Co-Chair',
     pillarSlug: 'fundraising',
     isCoChair: true,
-    hometown: 'Tyler, TX',
+    hometown: 'College Station, TX',
     year: 'Senior',
-    major: 'MGMT',
-    funFact: 'I love making jewelry!',
+    major: 'Psychology',
+    funFact: 'Went on a 2 week road trip this summer',
     photo: '/images/team/hannah-deats.jpg',
   },
 ];

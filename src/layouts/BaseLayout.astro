@@ -32,5 +32,45 @@ const { title, description = 'Aggie EWOP — Empowering Women Out of Prison, the
       <slot />
     </main>
     <Footer />
+    <script>
+      const reveal = () => {
+        const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-stagger');
+        if (!els.length) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          els.forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+
+        const hero = document.querySelector('[data-hero]');
+        // One paint: show above-the-fold immediately (CSS delays handle stagger)
+        if (hero) {
+          requestAnimationFrame(() => {
+            hero.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-stagger').forEach((el) => {
+              el.classList.add('is-visible');
+            });
+          });
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: '0px 0px -6% 0px', threshold: 0.05 },
+        );
+
+        els.forEach((el) => {
+          if (hero?.contains(el)) return;
+          observer.observe(el);
+        });
+      };
+
+      reveal();
+      document.addEventListener('astro:page-load', reveal);
+    </script>
   </body>
 </html>
