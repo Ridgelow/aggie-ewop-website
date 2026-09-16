@@ -9,7 +9,15 @@ export interface Props {
   description?: string;
 }
 
-const { title, description = 'Aggie EWOP — Empowering Women Out of Prison, the Texas A&M student chapter.' } = Astro.props;
+const {
+  title,
+  description = 'Aggie EWOP — Empowering Women Out of Prison, the Texas A&M student chapter.',
+} = Astro.props;
+
+const site = Astro.site ?? Astro.url;
+const pageUrl = new URL(Astro.url.pathname, site);
+const ogImage = new URL('/images/logo.jpg', site);
+const fullTitle = `${title} · Aggie EWOP`;
 ---
 
 <!doctype html>
@@ -21,8 +29,27 @@ const { title, description = 'Aggie EWOP — Empowering Women Out of Prison, the
     <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <meta name="theme-color" content="#E9267C" />
-    <title>{title} · Aggie EWOP</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl.href} />
+
+    <!-- Link / text previews: force logo instead of scraping the homepage hero -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aggie EWOP" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl.href} />
+    <meta property="og:image" content={ogImage.href} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="964" />
+    <meta property="og:image:height" content="964" />
+    <meta property="og:image:alt" content="Aggie EWOP logo" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage.href} />
+    <meta name="twitter:image:alt" content="Aggie EWOP logo" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
