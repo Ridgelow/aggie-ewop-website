@@ -13,7 +13,8 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-[60] border-b border-line bg-white/95 backdrop-blur-md">
+<!-- Fixed (not sticky) so the bar stays put when the menu locks page scroll -->
+<header class="fixed inset-x-0 top-0 z-[60] border-b border-line bg-white/95 backdrop-blur-md">
   <nav class="relative flex h-16 items-center justify-between px-5 sm:h-20 sm:px-6 md:h-24 md:px-24">
     <a href="/" class="shrink-0">
       <img src="/images/logo.jpg" alt="Aggie EWOP" class="h-10 w-auto sm:h-12 md:h-14" />
@@ -71,6 +72,7 @@ const currentPath = Astro.url.pathname;
     </div>
   </nav>
 </header>
+<div class="h-16 sm:h-20 md:h-24" aria-hidden="true"></div>
 
 <!-- Fixed to the viewport (moved to body in JS) so it works at any scroll position -->
 <div
