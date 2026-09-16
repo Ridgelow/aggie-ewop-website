@@ -1,0 +1,16 @@
+---
+import { stats } from '../data/content';
+---
+
+<section class="animate-fadeUp bg-gradient-to-br from-ink to-ink2 px-6 py-14 md:px-24">
+  <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+    {
+      stats.map((stat) => (
+        <div class="flex flex-col gap-2">
+          <span class="font-display text-3xl font-extrabold text-white md:text-[42px]">{stat.value}</span>
+          <span class="font-body text-sm leading-relaxed text-[#D8CFDE]">{stat.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>

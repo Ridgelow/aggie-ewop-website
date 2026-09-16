@@ -1,0 +1,61 @@
+---
+import type { Person } from '../data/team';
+import { pillars } from '../data/pillars';
+
+export interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+
+const initials = person.name
+  .split(' ')
+  .map((part) => part[0])
+  .join('')
+  .slice(0, 2)
+  .toUpperCase();
+
+const pillar = pillars.find((p) => p.slug === person.pillarSlug);
+
+const avatarBg: Record<string, string> = {
+  rose: 'bg-rose',
+  sky: 'bg-sky',
+  violet: 'bg-violet',
+  fundraising: 'bg-fundraising',
+};
+const textColor: Record<string, string> = {
+  rose: 'text-rose',
+  sky: 'text-sky',
+  violet: 'text-violet',
+  fundraising: 'text-fundraising',
+};
+
+const accentBg = pillar ? avatarBg[pillar.color] : 'bg-ink';
+const accentText = pillar ? textColor[pillar.color] : 'text-ink';
+---
+
+<div class="flex flex-col gap-3 rounded-2xl border border-line bg-white p-5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/10">
+  <div class={`relative h-16 w-16 shrink-0 overflow-hidden rounded-full ${accentBg}`}>
+    <div class="absolute inset-0 flex items-center justify-center font-display text-lg font-extrabold text-white">
+      {initials}
+    </div>
+    {person.photo && (
+      <img
+        src={person.photo}
+        alt={person.name}
+        class="absolute inset-0 h-full w-full object-cover"
+        onerror="this.remove()"
+        loading="lazy"
+      />
+    )}
+  </div>
+  <div>
+    <h3 class="font-display text-base font-bold text-ink">{person.name}</h3>
+    <div class={`font-body text-xs font-semibold ${accentText}`}>{person.role}</div>
+  </div>
+  {(person.hometown || person.year || person.major) && (
+    <p class="font-body text-xs leading-relaxed text-faint">
+      {[person.hometown, person.year, person.major].filter(Boolean).join(' · ')}
+    </p>
+  )}
+</div>

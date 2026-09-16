@@ -1,0 +1,52 @@
+---
+import { links } from '../data/links';
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/team', label: 'Our Team' },
+  { href: '/pillars', label: 'Pillars' },
+  { href: '/get-involved', label: 'Get Involved' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="sticky top-0 z-50 flex h-24 items-center justify-between border-b border-line bg-white px-6 md:px-24">
+  <a href="/" class="shrink-0">
+    <img src="/images/logo.jpg" alt="Aggie EWOP" class="h-14 w-auto" />
+  </a>
+
+  <div class="hidden gap-9 md:flex">
+    {
+      navItems.map((item) => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              'group relative pb-2 font-body text-sm font-semibold',
+              isActive ? 'text-ink' : 'text-muted hover:text-ink',
+            ]}
+          >
+            {item.label}
+            <span
+              class:list={[
+                'absolute -bottom-0.5 left-0 right-0 h-0.5 origin-left scale-x-0 rounded bg-brand transition-transform duration-300 group-hover:scale-x-100',
+                isActive && 'scale-x-100',
+              ]}
+            />
+          </a>
+        );
+      })
+    }
+  </div>
+
+  <a
+    href={links.applicationUrl}
+    class="rounded-lg bg-brand px-5 py-2.5 font-body text-sm font-bold text-white transition-transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-rose/30"
+  >
+    Apply Now
+  </a>
+</nav>

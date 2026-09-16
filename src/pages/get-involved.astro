@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Timeline from '../components/Timeline.astro';
+import { membershipRequirements, memberMeetingDates, whyJoin } from '../data/content';
+import { links } from '../data/links';
+---
+
+<BaseLayout title="Get Involved" description="How to join Aggie EWOP — membership requirements and the recruitment timeline.">
+  <section class="animate-fadeUp flex max-w-3xl flex-col gap-4 px-6 pb-10 pt-16 md:px-24 md:pt-24">
+    <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Get involved</span>
+    <h1 class="font-display text-4xl font-extrabold leading-tight text-ink md:text-5xl">Ready to join Aggie EWOP?</h1>
+    <p class="font-body text-lg leading-relaxed text-muted">
+      Use your strong mind and kind heart to make a difference — each one of you has what it takes to provide
+      value. Don't let fear keep you from joining.
+    </p>
+  </section>
+
+  <section class="animate-fadeUp flex flex-col gap-6 px-6 pb-16 md:px-24">
+    <h2 class="font-display text-2xl font-bold text-ink">Why Aggie EWOP?</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+      {
+        whyJoin.map((benefit, i) => (
+          <div
+            class:list={[
+              'flex items-start gap-3.5 rounded-2xl border border-line bg-white p-5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/10',
+              i === whyJoin.length - 1 && 'sm:col-span-2 md:col-span-3',
+            ]}
+          >
+            <span class="text-lg text-rose">★</span>
+            <span class="font-body text-[14.5px] leading-relaxed text-ink">{benefit}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="animate-fadeUp grid grid-cols-1 gap-16 bg-gradient-to-b from-pink-wash-1 to-pink-wash-2 px-6 py-16 md:grid-cols-2 md:px-24 md:py-[72px]">
+    <div class="flex flex-col gap-4">
+      <h2 class="font-display text-[28px] font-bold text-ink">Membership requirements</h2>
+      <p class="font-body text-[15px] leading-relaxed text-muted">
+        Our goal is for every member to actively contribute to the mission and grow from the opportunities we've
+        worked hard to provide.
+      </p>
+      <ul class="mt-2 flex flex-col gap-3">
+        {
+          membershipRequirements.map((req) => (
+            <li class="flex items-center gap-3 font-body text-[15px] text-ink">
+              <span class="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-rose-tint text-xs font-bold text-rose">✓</span>
+              {req}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="flex flex-col gap-4">
+      <h3 class="font-display text-xl font-semibold text-ink">Attend 3 member meetings</h3>
+      <p class="font-body text-sm text-muted">All member meetings run 5:30–6:30pm.</p>
+      <div class="flex flex-col gap-2.5">
+        {
+          memberMeetingDates.map((date, i) => (
+            <div class="flex items-center justify-between rounded-xl border border-line bg-white px-[18px] py-3.5 font-body text-[14.5px] text-ink">
+              <span>Meeting {i + 1}</span>
+              <strong>{date}</strong>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="animate-fadeUp flex flex-col gap-10 px-6 py-16 md:px-24 md:py-24">
+    <div class="flex flex-col items-center gap-2 text-center">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">How to join</span>
+      <h2 class="font-display text-[28px] font-bold text-ink">Recruitment timeline</h2>
+    </div>
+    <div class="mx-auto w-full max-w-3xl">
+      <Timeline />
+    </div>
+  </section>
+
+  <section class="animate-fadeUp grid grid-cols-1 items-center gap-10 bg-gradient-to-br from-ink to-ink2 px-6 py-16 md:grid-cols-[1fr_auto] md:px-24 md:py-20">
+    <div class="flex flex-col gap-4">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-[#F49FC4]">Apply in 5 minutes</span>
+      <h2 class="font-display text-3xl font-extrabold text-white md:text-4xl">Scan to start your application</h2>
+      <p class="max-w-md font-body text-base leading-relaxed text-[#D8CFDE]">
+        Please don't let fear keep you from joining — each one of you has what it takes to provide value.
+      </p>
+      <Button href={links.applicationUrl} class="mt-2 w-fit">Start 5-Minute Application</Button>
+    </div>
+    <div class="w-fit rounded-2xl bg-white p-5">
+      <img src="/images/apply-qr.png" alt="QR code to apply" class="h-44 w-44" />
+    </div>
+  </section>
+</BaseLayout>

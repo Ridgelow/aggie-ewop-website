@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import StatBand from '../components/StatBand.astro';
+import QuoteBlock from '../components/QuoteBlock.astro';
+import PillarCard from '../components/PillarCard.astro';
+import Timeline from '../components/Timeline.astro';
+import { pillars } from '../data/pillars';
+import { membershipRequirements } from '../data/content';
+import { links } from '../data/links';
+---
+
+<BaseLayout title="Home">
+  <section class="animate-fadeUp grid grid-cols-1 gap-12 px-6 py-16 md:grid-cols-[1.05fr_1fr] md:gap-16 md:px-24 md:py-24">
+    <div class="flex flex-col gap-5">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Aggie EWOP · Texas A&amp;M</span>
+      <h1 class="font-display text-4xl font-extrabold leading-tight text-ink md:text-[56px]">
+        Empowering women out of prison, one business plan at a time.
+      </h1>
+      <p class="max-w-lg font-body text-lg leading-relaxed text-muted">
+        Aggie EWOP equips women preparing for reentry with the mentorship, research, and resources to build a
+        business plan for life after prison — and gives Texas A&amp;M students a way to serve alongside them.
+      </p>
+      <div class="mt-2 flex flex-wrap gap-4">
+        <Button href="/get-involved">Start 5-Minute Application</Button>
+        <Button href="/about" variant="secondary">Learn About EWOP</Button>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="absolute -right-12 -top-12 h-80 w-80 rounded-full bg-brand opacity-40 blur-[70px]"></div>
+      <div class="relative overflow-hidden rounded-3xl shadow-2xl shadow-ink/20">
+        <img
+          src="/images/hero-prison-visit.jpg"
+          alt="Aggie EWOP students visiting the unit"
+          class="h-[340px] w-full object-cover md:h-[540px]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <StatBand />
+
+  <QuoteBlock />
+
+  <section class="animate-fadeUp bg-gradient-to-b from-pink-wash-1 to-pink-wash-2 px-6 py-16 md:px-24 md:py-24">
+    <div class="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">What we do</span>
+      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Four pillars, one mission</h2>
+      <p class="font-body text-base leading-relaxed text-muted">
+        Every member serves on one pillar team, working year-round toward reentry support for the women of EWOP.
+      </p>
+    </div>
+    <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-12 md:grid-cols-4">
+      {pillars.map((pillar) => <PillarCard pillar={pillar} />)}
+    </div>
+  </section>
+
+  <section class="animate-fadeUp grid grid-cols-1 gap-16 px-6 py-16 md:grid-cols-2 md:gap-20 md:px-24 md:py-24">
+    <div class="flex flex-col gap-5">
+      <h2 class="font-display text-3xl font-bold text-ink">Ready to join?</h2>
+      <p class="max-w-md font-body text-base leading-relaxed text-muted">
+        Our goal is for every Aggie EWOP member to actively contribute to the mission. Membership means:
+      </p>
+      <ul class="flex flex-col gap-3">
+        {
+          membershipRequirements.map((req) => (
+            <li class="flex items-center gap-3 font-body text-[15px] text-ink">
+              <span class="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-rose-tint text-xs font-bold text-rose">
+                ✓
+              </span>
+              {req}
+            </li>
+          ))
+        }
+        <li class="flex items-center gap-3 font-body text-[15px] text-ink">
+          <span class="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-rose-tint text-xs font-bold text-rose">
+            ✓
+          </span>
+          Attend 3 member meetings
+        </li>
+      </ul>
+      <Button href="/get-involved" class="mt-2 w-fit">Start 5-Minute Application</Button>
+    </div>
+    <div>
+      <h3 class="mb-5 font-display text-xl font-semibold text-ink">Recruitment timeline</h3>
+      <Timeline />
+    </div>
+  </section>
+</BaseLayout>

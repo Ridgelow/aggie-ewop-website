@@ -1,0 +1,27 @@
+---
+import { recruitmentTimeline } from '../data/content';
+
+const dotColor: Record<string, string> = {
+  rose: 'bg-rose',
+  violet: 'bg-violet',
+  sky: 'bg-sky',
+  ink: 'bg-ink',
+};
+---
+
+<div class="flex flex-col">
+  {
+    recruitmentTimeline.map((step, i) => (
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <span class={`block h-3.5 w-3.5 rounded-full ${dotColor[step.color]}`} />
+          {i < recruitmentTimeline.length - 1 && <span class="min-h-[52px] w-0.5 flex-1 bg-line" />}
+        </div>
+        <div class="pb-7">
+          <div class="font-body text-[15px] font-bold text-ink">{step.title}</div>
+          <div class="font-body text-[13px] text-faint">{step.date}</div>
+        </div>
+      </div>
+    ))
+  }
+</div>

@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pillars } from '../data/pillars';
+
+const borderColor: Record<string, string> = {
+  rose: 'border-t-rose',
+  sky: 'border-t-sky',
+  violet: 'border-t-violet',
+  fundraising: 'border-t-fundraising',
+};
+const chipColor: Record<string, string> = {
+  rose: 'bg-rose-tint text-rose',
+  sky: 'bg-sky-tint text-sky',
+  violet: 'bg-violet-tint text-violet',
+  fundraising: 'bg-fundraising-tint text-fundraising',
+};
+const bandBg = ['bg-white', 'bg-gradient-to-b from-pink-wash-1 to-pink-wash-2'];
+---
+
+<BaseLayout title="Pillars" description="What each Aggie EWOP pillar does, and its member requirements.">
+  <section class="animate-fadeUp flex max-w-3xl flex-col gap-4 px-6 pb-10 pt-16 md:px-24 md:pt-24">
+    <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">What we do</span>
+    <h1 class="font-display text-4xl font-extrabold leading-tight text-ink md:text-5xl">Four pillars, one mission</h1>
+    <p class="font-body text-lg leading-relaxed text-muted">
+      Every Aggie EWOP member joins one pillar team and works toward its requirements throughout the semester.
+    </p>
+  </section>
+
+  {
+    pillars.map((pillar, i) => (
+      <section id={pillar.slug} class={`animate-fadeUp border-t-4 ${borderColor[pillar.color]} ${bandBg[i % 2]} scroll-mt-24`}>
+        <div class="grid grid-cols-1 gap-10 px-6 py-14 md:grid-cols-2 md:gap-16 md:px-24 md:py-[72px]">
+          <div class="flex flex-col gap-3.5">
+            <span class={`w-fit rounded-full px-4 py-2 font-body text-sm font-semibold ${chipColor[pillar.color]}`}>
+              {pillar.name}
+            </span>
+            <h2 class="font-display text-2xl font-bold text-ink md:text-[28px]">
+              {pillar.director}, Director{pillar.coChairs.length > 0 && ` · ${pillar.coChairs.join(' & ')}, Co-Chair${pillar.coChairs.length > 1 ? 's' : ''}`}
+            </h2>
+            <p class="font-body text-base leading-relaxed text-muted">{pillar.description}</p>
+          </div>
+          <div class="flex flex-col gap-3.5">
+            <h3 class="font-display text-base font-semibold text-ink">Member requirements</h3>
+            {pillar.requirements.map((req) => (
+              <div class="flex items-baseline gap-2.5 font-body text-[15px] text-ink">
+                <span class={`shrink-0 rounded-full px-4 py-2 font-semibold text-[13px] ${chipColor[pillar.color]}`}>
+                  {req.label}
+                </span>
+                {req.detail}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>

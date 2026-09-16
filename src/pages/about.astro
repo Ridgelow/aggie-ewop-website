@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StatBand from '../components/StatBand.astro';
+import { facultyAdvisor } from '../data/team';
+---
+
+<BaseLayout title="About" description="What Aggie EWOP is, who qualifies for the program, and our history.">
+  <section class="animate-fadeUp flex max-w-3xl flex-col gap-5 px-6 pb-10 pt-16 md:px-24 md:pt-24">
+    <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">About</span>
+    <h1 class="font-display text-4xl font-extrabold leading-tight text-ink md:text-5xl">What is EWOP?</h1>
+    <p class="font-body text-lg leading-relaxed text-muted">
+      Empowering Women Out of Prison (EWOP) is a Christian non-profit transforming women by equipping them with
+      the resources and skills for reintegration through business plans.
+    </p>
+  </section>
+
+  <section class="animate-fadeUp grid grid-cols-1 gap-6 px-6 pb-16 md:grid-cols-2 md:px-24">
+    <div class="flex flex-col gap-3 rounded-2xl border border-line bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/10">
+      <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-tint">
+        <span class="font-display text-lg font-extrabold text-rose">★</span>
+      </div>
+      <h3 class="font-display text-xl font-semibold text-ink">In-Prison Leadership &amp; Entrepreneurship Program</h3>
+      <p class="font-body text-sm leading-relaxed text-muted">
+        A leadership and business-planning curriculum delivered inside the unit, where women build the plan
+        they'll carry into reentry.
+      </p>
+    </div>
+    <div class="flex flex-col gap-3 rounded-2xl border border-line bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/10">
+      <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-tint">
+        <span class="font-display text-lg font-extrabold text-violet">★</span>
+      </div>
+      <h3 class="font-display text-xl font-semibold text-ink">Re-Entry Assistance Program</h3>
+      <p class="font-body text-sm leading-relaxed text-muted">
+        Ongoing support that connects graduates to resources as they rebuild their lives after release.
+      </p>
+    </div>
+  </section>
+
+  <StatBand />
+
+  <section class="animate-fadeUp grid grid-cols-1 items-center gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:px-24 md:py-24">
+    <div class="overflow-hidden rounded-2xl shadow-xl shadow-ink/10">
+      <img src="/images/program-session.jpg" alt="Program session" class="h-64 w-full object-cover md:h-[360px]" />
+    </div>
+    <div class="flex flex-col gap-4">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Who qualifies</span>
+      <h2 class="font-display text-3xl font-bold text-ink">What is the process?</h2>
+      <ul class="flex flex-col gap-3">
+        <li class="flex items-center gap-3 font-body text-base text-ink">
+          <span class="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-rose-tint text-xs font-bold text-rose">✓</span>
+          Close to parole
+        </li>
+        <li class="flex items-center gap-3 font-body text-base text-ink">
+          <span class="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-rose-tint text-xs font-bold text-rose">✓</span>
+          High school diploma or GED
+        </li>
+      </ul>
+      <p class="font-body text-sm leading-relaxed text-muted">
+        Of roughly 1,100 applicants each cycle, about 80 women are chosen — and 89 of the program's 100 current
+        participants are mothers.
+      </p>
+    </div>
+  </section>
+
+  <section class="animate-fadeUp bg-gradient-to-b from-pink-wash-1 to-pink-wash-2 px-6 py-16 md:px-24 md:py-24">
+    <div class="mb-12 flex flex-col items-center gap-2 text-center">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Where we come from</span>
+      <h2 class="font-display text-3xl font-bold text-ink">Our history</h2>
+    </div>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="flex flex-col gap-3 rounded-2xl border border-line bg-white p-7">
+        <h3 class="font-display text-xl font-semibold text-ink">A brief history of EWOP</h3>
+        <p class="font-body text-sm italic leading-relaxed text-faint">
+          [Add EWOP's founding story — where and when the national program began, and how it grew to Texas.]
+        </p>
+      </div>
+      <div class="flex flex-col overflow-hidden rounded-2xl border border-line bg-white">
+        <img src="/images/birth-of-aggie-ewop.jpg" alt="The birth of Aggie EWOP" class="h-48 w-full object-cover" />
+        <div class="flex flex-col gap-2.5 p-6">
+          <h3 class="font-display text-xl font-semibold text-ink">The birth of Aggie EWOP</h3>
+          <p class="font-body text-sm italic leading-relaxed text-faint">
+            [Add how the Texas A&amp;M chapter started — the founding students, the first visit, the first
+            semester.]
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="animate-fadeUp grid grid-cols-1 items-center gap-8 px-6 py-16 md:grid-cols-[220px_1fr] md:gap-10 md:px-24 md:py-24">
+    <img
+      src={facultyAdvisor.photo}
+      alt={facultyAdvisor.name}
+      class="h-40 w-40 rounded-full object-cover shadow-xl shadow-ink/10 md:h-[220px] md:w-[220px]"
+      onerror="this.style.display='none'"
+    />
+    <div class="flex flex-col gap-2.5">
+      <span class="font-body text-sm font-bold uppercase tracking-widest text-rose">Faculty advisor</span>
+      <h2 class="font-display text-2xl font-bold text-ink md:text-[28px]">{facultyAdvisor.name}</h2>
+      <p class="font-body text-base leading-relaxed text-muted">{facultyAdvisor.role}</p>
+    </div>
+  </section>
+</BaseLayout>

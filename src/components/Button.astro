@@ -1,0 +1,19 @@
+---
+export interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary';
+  class?: string;
+}
+
+const { href, variant = 'primary', class: className = '' } = Astro.props;
+
+const base = 'inline-block rounded-lg px-6 py-3 text-center font-body text-sm font-bold transition-all';
+const styles = {
+  primary: 'bg-brand text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-rose/30',
+  secondary: 'border-2 border-ink text-ink hover:bg-ink hover:text-white',
+};
+---
+
+<a href={href} class={`${base} ${styles[variant]} ${className}`}>
+  <slot />
+</a>

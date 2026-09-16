@@ -1,0 +1,16 @@
+---
+import { missionQuote } from '../data/content';
+---
+
+<section class="animate-fadeUp relative flex flex-col items-center gap-6 px-6 py-24 text-center md:px-40">
+  <span
+    aria-hidden="true"
+    class="pointer-events-none absolute top-6 bg-brand bg-clip-text font-accent text-[140px] leading-none text-transparent opacity-10 md:text-[180px]"
+    >&ldquo;</span
+  >
+  <div class="relative h-1 w-16 rounded-full bg-brand"></div>
+  <p class="relative max-w-3xl font-accent text-2xl italic leading-relaxed text-ink md:text-[32px]">
+    {missionQuote}
+  </p>
+  <span class="relative font-body text-sm font-semibold text-faint">— Aggie EWOP</span>
+</section>
