@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "aggie-ewop-site",
+  "compatibility_date": "2026-09-28",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "aggieewop.org", "custom_domain": true },
+    { "pattern": "www.aggieewop.org", "custom_domain": true }
+  ],
+  "workers_dev": true,
+  "preview_urls": true
+}
